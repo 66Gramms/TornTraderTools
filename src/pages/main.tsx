@@ -1,28 +1,11 @@
-import useLogCategories from "../hooks/api/torn/use-log-categories";
+import LogTypeDisplay from "components/organisms/LogTypeDisplay";
+import useItems from "hooks/api/torn/use-items";
 
 const Main = () => {
-  const { data, isLoading, error } = useLogCategories();
+  const { data: itemData } = useItems();
+  console.log("itemData", itemData);
 
-  if (error) console.error("ERROR: ", error);
-  if (!isLoading) console.log(data.logcategories);
-
-  return (
-    <main>
-      {isLoading ? (
-        "Loading..."
-      ) : (
-        <div>
-          {data.logcategories.map((cat) => {
-            return (
-              <div>
-                {cat.id}: {cat.title}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </main>
-  );
+  return <LogTypeDisplay />;
 };
 
 export default Main;
