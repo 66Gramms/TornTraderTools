@@ -1,28 +1,25 @@
-import { TornAPI } from "torn-client";
 import "./App.css";
-import { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Main from "./pages/main";
+import { TornAPI } from "torn-client";
+import { TornClientProvider } from "./providers/torn-client-provider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
-  const client = new TornAPI({
+  const queryClient = new QueryClient();
+  const tornClient = new TornAPI({
     apiKeys: [import.meta.env.VITE_FULL_ACCESS_KEY],
-    comment: "TornTraderTools",
+    comment: "TornTradingTools",
   });
 
-  // Example: Fetch a user's profile using a context method
-  async function getUserProfile() {
-    try {
-      const user = await client.user.profile();
-      console.log(user.profile.name, user.profile.level, user.profile.gender);
-    } catch (error) {
-      console.error("Failed to fetch user profile:", error);
-    }
-  }
-
-  useEffect(() => {
-    getUserProfile();
-  }, []);
-
-  return <main>Hello world</main>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools />
+      <TornClientProvider client={tornClient}>
+        <Main />
+      </TornClientProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App;
