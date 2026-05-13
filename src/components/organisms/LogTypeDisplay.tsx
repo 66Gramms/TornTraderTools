@@ -1,7 +1,7 @@
 import useLogTypes from "hooks/api/torn/use-log-types";
 
 const LogTypeDisplay = () => {
-  const { data, isLoading, error } = useLogTypes();
+  const { data, isLoading } = useLogTypes();
 
   return (
     <main>
