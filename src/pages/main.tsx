@@ -1,5 +1,6 @@
-import { LogType, ITEMS } from "constants";
-import useLog from "hooks/api/torn/use-log";
+import LogDisplay from "@/components/organisms/LogDisplay";
+import { ITEMS, LogType } from "@/constants";
+import useLog from "@/hooks/api/torn/use-log";
 
 const Main = () => {
   const { data: logData, isLoading: logIsLoading } = useLog([
@@ -17,7 +18,12 @@ const Main = () => {
     );
   });
 
-  return <div>Done</div>;
+  return (
+    <>
+      <div>Done</div>
+      <LogDisplay />
+    </>
+  );
 
   // return <LogTypeDisplay />;
 };

@@ -1,10 +1,10 @@
-import useLogTypes from "hooks/api/torn/use-log-types";
+import useLogTypes from "@/hooks/api/torn/use-log-types";
 
-const LogTypeDisplay = () => {
+const LogDisplay = () => {
   const { data, isLoading } = useLogTypes();
 
   return (
-    <main>
+    <main className="bg-red-500">
       {isLoading ? (
         "Loading..."
       ) : (
@@ -22,4 +22,4 @@ const LogTypeDisplay = () => {
   );
 };
 
-export default LogTypeDisplay;
+export default LogDisplay;

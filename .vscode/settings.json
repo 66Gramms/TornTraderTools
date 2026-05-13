@@ -4,5 +4,8 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
-  "js/ts.preferences.importModuleSpecifier": "non-relative"
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "files.watcherExclude": {
+    "src/constants/items.ts": true
+  }
 }

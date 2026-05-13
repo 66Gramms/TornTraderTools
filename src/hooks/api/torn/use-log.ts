@@ -1,5 +1,5 @@
+import useTornClient from "@/hooks/use-torn-client";
 import { useQuery } from "@tanstack/react-query";
-import useTornClient from "hooks/use-torn-client";
 
 const useLog = (logCategories: number[]) => {
   const tornClient = useTornClient();
