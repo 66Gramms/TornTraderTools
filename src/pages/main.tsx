@@ -1,4 +1,5 @@
 import LogDisplay from "@/components/organisms/LogDisplay";
+import DemoPage from "@/components/organisms/TableTest/page";
 import { ITEMS, LogType } from "@/constants";
 import useLog from "@/hooks/api/torn/use-log";
 
@@ -20,6 +21,7 @@ const Main = () => {
 
   return (
     <>
+      <DemoPage />
       <div>Done</div>
       <LogDisplay />
     </>
