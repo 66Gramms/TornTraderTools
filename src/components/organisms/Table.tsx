@@ -3,6 +3,8 @@ import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
+  type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -15,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -25,11 +28,17 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = useState<SortingState>([]);
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting,
+    },
   });
 
   return (
@@ -38,18 +47,16 @@ export function DataTable<TData, TValue>({
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                  </TableHead>
-                );
-              })}
+              {headerGroup.headers.map((header) => (
+                <TableHead key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                </TableHead>
+              ))}
             </TableRow>
           ))}
         </TableHeader>

@@ -99,15 +99,13 @@ export default function LogTable() {
     const item = ITEMS.find((item) => item.id === log.data.items[0].id);
     return {
       date: new Date(log.timestamp * 1000).toLocaleString(undefined, {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
+        weekday: "short",
+        month: "short",
         day: "numeric",
         hour: "2-digit",
         minute: "2-digit",
-        second: "2-digit",
       }),
-      name: item?.name ?? "MISSING ITEM",
+      item: { name: item?.name ?? "MISSING ITEM", image: item?.image },
       quantity: log.data.items[0]?.qty,
       each: log.data.cost_each,
       total: log.data.cost_total,
