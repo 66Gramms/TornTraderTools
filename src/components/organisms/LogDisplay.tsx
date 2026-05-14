@@ -4,7 +4,7 @@ const LogDisplay = () => {
   const { data, isLoading } = useLogTypes();
 
   return (
-    <main className="bg-red-500">
+    <main>
       {isLoading ? (
         "Loading..."
       ) : (

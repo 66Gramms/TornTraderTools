@@ -1,4 +1,5 @@
 import "@/App.css";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import Main from "@/pages/main";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -16,7 +17,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       <TornClientProvider client={tornClient}>
-        <Main />
+        <TooltipProvider>
+          <Main />
+        </TooltipProvider>
       </TornClientProvider>
     </QueryClientProvider>
   );
