@@ -3,92 +3,7 @@ import useLog from "@/hooks/api/torn/use-log";
 import { DataTable } from "../Table";
 import { columns, type BuyLog } from "./columns";
 
-function getData(): BuyLog[] {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    {
-      id: "728ed52f",
-      quantity: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ];
-}
-
-export default function LogTable() {
+const LogTable = () => {
   const { data: logData, isLoading: logIsLoading } = useLog([
     LogType.MARKET_BUY,
   ]);
@@ -117,4 +32,6 @@ export default function LogTable() {
       <DataTable columns={columns} data={marketBuyLogs} />
     </div>
   );
-}
+};
+
+export default LogTable;

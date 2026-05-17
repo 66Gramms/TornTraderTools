@@ -1,6 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { ArrowUpDown } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -43,12 +48,12 @@ export const columns: ColumnDef<BuyLog>[] = [
   },
   {
     accessorKey: "item",
-    header: () => <div className="text-center">Item</div>,
+    header: () => "Item",
     cell: ({ row }) => {
       const item = row.original.item;
       return (
         <div className="flex">
-          <img src={item.image} className="max-h-10" />
+          <img src={item.image} className="max-h-6 -ml-4" />
           {item.name}
         </div>
       );
@@ -57,14 +62,6 @@ export const columns: ColumnDef<BuyLog>[] = [
   {
     accessorKey: "quantity",
     header: "Quantity",
-  },
-  {
-    accessorKey: "each",
-    header: () => <div className="text-right">Price / each</div>,
-    cell: ({ row }) => {
-      const each = row.original.each;
-      return getMoneyFormatted(each);
-    },
   },
   {
     accessorKey: "total",
@@ -82,7 +79,14 @@ export const columns: ColumnDef<BuyLog>[] = [
     ),
     cell: ({ row }) => {
       const total = row.original.total;
-      return getMoneyFormatted(total);
+      const each = row.original.each;
+
+      return (
+        <Tooltip>
+          <TooltipTrigger render={getMoneyFormatted(total)} />
+          <TooltipContent>{getMoneyFormatted(each)} each</TooltipContent>
+        </Tooltip>
+      );
     },
   },
 ];
