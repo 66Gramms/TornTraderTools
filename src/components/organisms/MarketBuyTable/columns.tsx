@@ -6,6 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { getMoneyFormatted } from "@/lib/components";
 import { ArrowUpDown } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -20,16 +21,6 @@ export interface BuyLog {
   each: number;
   total: number;
 }
-
-const getMoneyFormatted = (amount: number) => {
-  const moneyFormatted = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(amount);
-
-  return <div className="text-right font-medium">{moneyFormatted}</div>;
-};
 
 export const columns: ColumnDef<BuyLog>[] = [
   {

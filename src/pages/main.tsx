@@ -1,15 +1,12 @@
-import LogTable from "@/components/organisms/LogTable";
+import BazaarSellTable from "@/components/organisms/BazaarSellTable";
 
 const Main = () => {
   return (
     <>
-      <LogTable />
-      <div>Done</div>
-      {/* <LogDisplay /> */}
+      <BazaarSellTable />
     </>
   );
 
-  // return <LogTypeDisplay />;
 };
 
 export default Main;

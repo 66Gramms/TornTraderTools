@@ -4,14 +4,13 @@ import { useEffect, useState } from "react";
 import { DataTable } from "../Table";
 import { columns, type BuyLog } from "./columns";
 
-const LogTable = () => {
+const MarketBuyTable = () => {
   const { data: logData, isLoading: logIsLoading } = useLog([
     LogType.MARKET_BUY,
   ]);
   const [pageData, setPageData] = useState(logData);
 
   useEffect(() => {
-    console.log("LOGDATA USEFFECT");
     if (logData) {
       setPageData(logData);
     }
@@ -69,4 +68,4 @@ const LogTable = () => {
   );
 };
 
-export default LogTable;
+export default MarketBuyTable;
